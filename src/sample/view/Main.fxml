@@ -8,8 +8,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -77,9 +79,13 @@
                   </TextField>
                </children>
             </HBox>
-            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" prefHeight="581.0" prefWidth="1000.0" style="-fx-background-color: #eeeeee;">
+            <ScrollPane fx:id="scroll" fitToHeight="true" hbarPolicy="NEVER" prefHeight="581.0" prefWidth="1000.0" style="-fx-background-color: #eeeeee;" VBox.vgrow="ALWAYS">
                <content>
-                  <Button mnemonicParsing="false" onAction="#enter_form" prefHeight="86.0" prefWidth="116.0" text="Button" />
+                  <GridPane fx:id="grid" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="7.0" prefWidth="15.0">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                     </rowConstraints>
+                  </GridPane>
                </content>
             </ScrollPane>
             <HBox alignment="CENTER" prefHeight="43.0" prefWidth="1000.0" style="-fx-background-color: #44DDFF;">
