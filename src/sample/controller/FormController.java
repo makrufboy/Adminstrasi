@@ -4,7 +4,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -16,7 +15,6 @@ import sample.modal.Surat;
 import sample.utils.Helper;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.*;
 
 public class FormController extends Helper{
@@ -27,7 +25,8 @@ public class FormController extends Helper{
     }
 
     @FXML
-    private void pagePrint() { ObservableList<Node> childrens = formGrid.getChildren();
+    private void pagePrint() {
+        ObservableList<Node> childrens = formGrid.getChildren();
         String judul = "";
         String value;
         for (Node nodes : childrens){
@@ -75,7 +74,7 @@ public class FormController extends Helper{
     private HBox boxButton;
 
     private List<FieldSurat> fieldSurats = new ArrayList<>();
-    private Map<String, String> fieldList = new HashMap<>();
+    private Map<String, String> fieldList = new LinkedHashMap<>();
     private String[] fieldKolomSurat;
 
     public void setColumnName(String testText) {
@@ -84,8 +83,52 @@ public class FormController extends Helper{
 //        check list data
         if (testText.equals("Surat Keterangan Usaha")){
             this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganUsaha();
+        }else if(testText.equals("Surat Keterangan Kematian")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganKematian();
+        }else if(testText.equals("Surat Keterangan Beda Nama")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganBedaNama();
+        }else if(testText.equals("Surat Keterangan Beda Tanggal Lahir")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganBedaTanggalLahir();
+        }else if(testText.equals("Surat Keterangan Belum Memiliki Rumah")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganBelumMemilikiRumah();
+        }else if(testText.equals("Surat Keterangan Identitas Orang Tua")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganIdentitasOrangTua();
+        }else if(testText.equals("Surat Keterangan Duda")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganDuda();
         }else if(testText.equals("Surat Keterangan Menikah")){
             this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganMenikah();
+        }else if(testText.equals("Surat Keterangan Numpang Nikah")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganNumpangNikah();
+        }else if(testText.equals("Surat Keterangan Belum Menikah")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganBelumMenikah();
+        }else if(testText.equals("Surat Keterangan Penghasilan")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganPenghasilan();
+        }else if(testText.equals("Surat Keterangan Tanah Tidak Dalam Sengketa")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganTanahTidakDalamSengketa();
+        }else if(testText.equals("Surat Keterangan Tidak Mampu")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganTidakMampu();
+        }else if(testText.equals("Surat Keterangan Cerai Lingkungan")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganCeraiLingkungan();
+        }else if(testText.equals("Surat Keterangan Catatan Kepolisian")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganCatatanKepolisian();
+        }else if(testText.equals("Surat Keterangan Izin Berkunjung")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganIzinBerkunjung();
+        }else if(testText.equals("Surat Keterangan Kehilangan")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganKehilangan();
+        }else if(testText.equals("Surat Keterangan Bepergian")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganBepergian();
+        }else if(testText.equals("Surat Keterangan Kepemilikan Sepeda Motor")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKepemilikanSepedaMotor();
+        }else if(testText.equals("Surat Keterangan Telah Melakukan Penelitian")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganMelakukanPenelitian();
+        }else if(testText.equals("Surat Keterangan Perwalian/Pengampu")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganPerwalian();
+        }else if(testText.equals("Surat Keterangan Terdaftar")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganTerdaftar();
+        }else if(testText.equals("Surat Keterangan Domisili Usaha")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganDomisiliUsaha();
+        }else if(testText.equals("Surat Keterangan Kelahiran")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganKelahiran();
         }
     }
 

@@ -32,14 +32,29 @@ public class Controller implements Initializable {
     private List<Surat> surats = new ArrayList<>();
     private String [] nama_surat = new String[]{
             "Surat Keterangan Usaha",
+            "Surat Keterangan Kematian",
+            "Surat Keterangan Beda Nama",
+            "Surat Keterangan Beda Tanggal Lahir",
+            "Surat Keterangan Belum Memiliki Rumah",
+            "Surat Keterangan Identitas Orang Tua",
+            "Surat Keterangan Duda",
             "Surat Keterangan Menikah",
+            "Surat Keterangan Numpang Nikah",
             "Surat Keterangan Belum Menikah",
-            "Surat Keterangan Rumah",
-            "Surat Keterangan Badan Usaha",
-            "Surat Keterangan Anak",
-            "Surat Keterangan Cerai",
-            "Surat Keterangan Orangtua",
-            "Surat Keterangan Dinas"
+            "Surat Keterangan Penghasilan",
+            "Surat Keterangan Tanah Tidak Dalam Sengketa",
+            "Surat Keterangan Tidak Mampu",
+            "Surat Keterangan Cerai Lingkungan",
+            "Surat Keterangan Catatan Kepolisian",
+            "Surat Keterangan Izin Berkunjung",
+            "Surat Keterangan Kehilangan",
+            "Surat Keterangan Bepergian",
+            "Surat Keterangan Kepemilikan Sepeda Motor",
+            "Surat Keterangan Telah Melakukan Penelitian",
+            "Surat Keterangan Perwalian/Pengampu",
+            "Surat Keterangan Terdaftar",
+            "Surat Keterangan Domisili Usaha",
+            "Surat Keterangan Kelahiran"
     };
 
 
@@ -47,7 +62,7 @@ public class Controller implements Initializable {
         List<Surat> surats = new ArrayList<>();
         Surat surat;
 
-        for (int i=0; i<9; i++){
+        for (int i=0; i<nama_surat.length; i++){
             surat = new Surat();
             surat.setNamaSurat(nama_surat[i]);
             surat.setImgSrc("../images/img_form.png");
