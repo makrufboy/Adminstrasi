@@ -150,6 +150,7 @@ public class FormController extends Helper{
 
     public void init(String text){
         setColumnName(text);
+
         fieldSurats.addAll(getFieldSurats());
 
 
