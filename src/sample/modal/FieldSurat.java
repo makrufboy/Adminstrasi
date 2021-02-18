@@ -10,6 +10,7 @@ public class FieldSurat {
     }
 
     public void setFieldFormSurat(String fieldFormSurat) {
+
         this.fieldFormSurat = fieldFormSurat;
     }
 
@@ -29,6 +30,8 @@ public class FieldSurat {
     public static String [] fieldSuratKeteranganMenikah = new String[]{
             "Nama"
     };
+
+    public String getstring(){ return this.fieldFormSurat;}
 
     public static String[] getFieldSuratKeteranganUsaha() {
         return fieldSuratKeteranganUsaha;
