@@ -4,28 +4,18 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import sample.modal.FieldSurat;
 import sample.modal.Surat;
 import sample.utils.Helper;
-import com.spire.doc.*;
 
-
-import java.awt.*;
-import java.io.*;
-
+import java.io.IOException;
 import java.util.*;
-import java.util.List;
 
 public class FormController extends Helper{
 
@@ -35,7 +25,7 @@ public class FormController extends Helper{
     }
 
     @FXML
-    private void pagePrint() throws IOException {
+    private void pagePrint() {
         ObservableList<Node> childrens = formGrid.getChildren();
         String judul = "";
         String value;
@@ -54,9 +44,7 @@ public class FormController extends Helper{
                 }
             }
         }
-        replace(fieldList);
-        excel(fieldList);
-//        fieldList.forEach((key, value1) -> System.out.println(key + " " + value1));
+        fieldList.forEach((key, value1) -> System.out.println(key + " " + value1));
     }
 
     @FXML
@@ -89,112 +77,58 @@ public class FormController extends Helper{
     private Map<String, String> fieldList = new LinkedHashMap<>();
     private String[] fieldKolomSurat;
 
-    public void open(String direktori){
-        Desktop desktop = Desktop.getDesktop();
-        try {
-            File f = new File(direktori);
-            desktop.open(f);  // opens application (MSWord) associated with .doc file
-        }
-        catch(Exception ex) {
-            // WordDocument.this is to refer to outer class's instance from inner class
-        }
-    }
-
-    public void excel(Map<String, String> peta) throws IOException {
-
-        FileInputStream file = new FileInputStream(new File("D:\\netbean\\tes\\test1.xlsx"));
-
-        //Create Workbook instance holding reference to .xlsx file
-        XSSFWorkbook workbook = new XSSFWorkbook(file);
-
-        //Get first/desired sheet from the workbook
-        XSSFSheet sheet = workbook.getSheetAt(0);
-
-        //Iterate over data and write to sheet
-        int rowCount = sheet.getLastRowNum();
-        Row row = sheet.createRow(++rowCount);
-
-        Iterator iterator = peta.keySet().iterator();
-        int cellnum = 0;
-
-        while(iterator.hasNext()){
-            Object key   = iterator.next();
-//            System.out.println("ini dia judul "+ (String) key);
-            Object value = peta.get(key);
-            Cell cell = row.createCell(cellnum++);
-            cell.setCellValue((String) value);
-//            System.out.println("ini dia hasil "+ (String) value);
-        }
-
-        try
-        {
-            //Write the workbook in file system
-            FileOutputStream out = new FileOutputStream(new File("D:\\netbean\\tes\\test1.xlsx"));
-            workbook.write(out);
-            out.close();
-//            System.out.println("howtodoinjava_demo.xlsx written successfully on disk.");
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    public void replace(Map<String, String> peta){
-        String input = "D:\\netbean\\tes\\dok1.docx";
-        String output = "D:\\netbean\\tes\\keluar.docx";
-        //load Word document
-        Document document = new Document();
-        document.loadFromFile(input, FileFormat.Docx);
-
-        Iterator iterator = peta.keySet().iterator();
-
-        while(iterator.hasNext()){
-            Object key   = iterator.next();
-            Object value = peta.get(key);
-            switch((String) key) {
-                case "Nama":
-                    document.replace("namx", (String) value, false, true);
-                    break;
-                case "Jenis Kelamin":
-                    document.replace("jkx", (String) value, false, true);
-                    break;
-                case "Tempat / Tgl Lahir":
-                    document.replace("ttlx", (String) value, false, true);
-                    break;
-                case "Agama / Kebangsaan":
-                    document.replace("agx", (String) value, false, true);
-                    break;
-                case "Pekerjaan":
-                    document.replace("pjx", (String) value, false, true);
-                    break;
-                case "NIK":
-                    document.replace("nikx", (String) value, false, true);
-                    break;
-                case "Alamat":
-                    document.replace("alx", (String) value, false, true);
-                    break;
-                case "Nomer Lingkungan":
-                    document.replace("nlx", (String) value, false, true);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        //save the document
-        document.saveToFile(output,FileFormat.Docx);
-        open(output);
-    }
-
     public void setColumnName(String testText) {
         System.out.println(testText);
 
 //        check list data
         if (testText.equals("Surat Keterangan Usaha")){
             this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganUsaha();
+        }else if(testText.equals("Surat Keterangan Kematian")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganKematian();
+        }else if(testText.equals("Surat Keterangan Beda Nama")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganBedaNama();
+        }else if(testText.equals("Surat Keterangan Beda Tanggal Lahir")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganBedaTanggalLahir();
+        }else if(testText.equals("Surat Keterangan Belum Memiliki Rumah")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganBelumMemilikiRumah();
+        }else if(testText.equals("Surat Keterangan Identitas Orang Tua")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganIdentitasOrangTua();
+        }else if(testText.equals("Surat Keterangan Duda")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganDuda();
         }else if(testText.equals("Surat Keterangan Menikah")){
             this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganMenikah();
+        }else if(testText.equals("Surat Keterangan Numpang Nikah")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganNumpangNikah();
+        }else if(testText.equals("Surat Keterangan Belum Menikah")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganBelumMenikah();
+        }else if(testText.equals("Surat Keterangan Penghasilan")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganPenghasilan();
+        }else if(testText.equals("Surat Keterangan Tanah Tidak Dalam Sengketa")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganTanahTidakDalamSengketa();
+        }else if(testText.equals("Surat Keterangan Tidak Mampu")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganTidakMampu();
+        }else if(testText.equals("Surat Keterangan Cerai Lingkungan")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganCeraiLingkungan();
+        }else if(testText.equals("Surat Keterangan Catatan Kepolisian")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganCatatanKepolisian();
+        }else if(testText.equals("Surat Keterangan Izin Berkunjung")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganIzinBerkunjung();
+        }else if(testText.equals("Surat Keterangan Kehilangan")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganKehilangan();
+        }else if(testText.equals("Surat Keterangan Bepergian")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganBepergian();
+        }else if(testText.equals("Surat Keterangan Kepemilikan Sepeda Motor")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKepemilikanSepedaMotor();
+        }else if(testText.equals("Surat Keterangan Telah Melakukan Penelitian")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganMelakukanPenelitian();
+        }else if(testText.equals("Surat Keterangan Perwalian/Pengampu")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganPerwalian();
+        }else if(testText.equals("Surat Keterangan Terdaftar")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganTerdaftar();
+        }else if(testText.equals("Surat Keterangan Domisili Usaha")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganDomisiliUsaha();
+        }else if(testText.equals("Surat Keterangan Kelahiran")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganKelahiran();
         }
     }
 
@@ -211,14 +145,13 @@ public class FormController extends Helper{
     }
 
     public void setLabelSurat(Surat text){
-
         labelSurat.setText(text.getNamaSurat());
     }
 
     public void init(String text){
         setColumnName(text);
-        fieldSurats.addAll(getFieldSurats());
 
+        fieldSurats.addAll(getFieldSurats());
 
 
         int col = 0;

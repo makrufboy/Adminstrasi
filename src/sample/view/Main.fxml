@@ -72,7 +72,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField style="-fx-background-color: #ffffff;">
+                  <TextField fx:id="search" style="-fx-background-color: #ffffff;">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
