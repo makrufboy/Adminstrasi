@@ -47,7 +47,8 @@ public class FieldSurat {
             "Pekerjaan",
             "NIK",
             "Nomor Surat",
-            "Alamat"
+            "Alamat",
+            "Alamat 2"
     };
     public static String [] fieldSuratKeteranganBedaTanggalLahir = new String[]{
             "Nama",
@@ -257,8 +258,10 @@ public class FieldSurat {
             "Nomor Mesin",
             "Warna",
             "Bahan Bakar",
+            "TNKB",
             "BPKB No:",
-            "Atas Nama"
+            "Atas Nama",
+            "status"
     };
     public static String [] fieldSuratKeteranganMelakukanPenelitian = new String[]{
             "Nama",
