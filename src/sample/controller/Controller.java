@@ -36,37 +36,30 @@ public class Controller implements Initializable {
     private List<Surat> surats = new ArrayList<>();
     private String [] nama_surat = new String[]{
             "Surat Keterangan Usaha",
+            "Surat Keterangan Kematian",
             "Surat Keterangan Beda Nama",
             "Surat Keterangan Beda Tanggal Lahir",
             "Surat Keterangan Belum Memiliki Rumah",
-<<<<<<< HEAD
             "Surat Keterangan Identitas Orang Tua",
             "Surat Keterangan Duda",
             "Surat Keterangan Janda",
             "Surat Keterangan Menikah",
             "Surat Keterangan Numpang Nikah",
-=======
->>>>>>> dcc8cb5496c9702a4ab0cd1ae4622512efb24a41
             "Surat Keterangan Belum Menikah",
-            "Surat Keterangan Bepergian",
-            "Surat Keterangan Catatan Kepolisian",
-            "Surat Keterangan Cerai Lingkungan  kayaknya di skip",
-            "Surat Keterangan Domisili Usaha",
-            "Surat Keterangan Duda",
-            "Surat Keterangan Identitas Orang Tua",
-            "Surat Keterangan Izin Berkunjung kayaknya di skip",
-            "Surat Keterangan Kehilangan",
-            "Surat Keterangan Kelahiran",
-            "Surat Keterangan Kematian",
-            "Surat Keterangan Kepemilikan Sepeda Motor",
-            "Surat Keterangan Menikah",
-            "Surat Keterangan Numpang Nikah",
-            "Surat Keterangan Penghasilan ada yang belom formnya",
-            "Surat Keterangan Perwalian",
+            "Surat Keterangan Penghasilan",
             "Surat Keterangan Tanah Tidak Dalam Sengketa",
-            "Surat Keterangan Telah Melakukan Penelitian masih ad yng blom orm",
+            "Surat Keterangan Tidak Mampu",
+            "Surat Keterangan Cerai Lingkungan",
+            "Surat Keterangan Catatan Kepolisian",
+            "Surat Keterangan Izin Berkunjung",
+            "Surat Keterangan Kehilangan",
+            "Surat Keterangan Bepergian",
+            "Surat Keterangan Kepemilikan Sepeda Motor",
+            "Surat Keterangan Telah Melakukan Penelitian",
+            "Surat Keterangan Perwalian/Pengampu",
             "Surat Keterangan Terdaftar",
-            "Surat Keterangan Tidak Mampu"
+            "Surat Keterangan Domisili Usaha",
+            "Surat Keterangan Kelahiran"
     };
 
 
