@@ -42,6 +42,7 @@ public class Controller implements Initializable {
             "Surat Keterangan Belum Memiliki Rumah",
             "Surat Keterangan Identitas Orang Tua",
             "Surat Keterangan Duda",
+            "Surat Keterangan Janda",
             "Surat Keterangan Menikah",
             "Surat Keterangan Numpang Nikah",
             "Surat Keterangan Belum Menikah",
