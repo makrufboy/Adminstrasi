@@ -53,8 +53,18 @@ public class FieldSurat {
             "Agama / Kebangsaan",
             "Pekerjaan",
             "NIK",
+<<<<<<< HEAD
             "Alamat",
             "Lingkungan"
+=======
+<<<<<<< HEAD
+            "Nomor Surat",
+            "Alamat",
+            "Alamat 2"
+=======
+            "Alamat"
+>>>>>>> 79682626d5c0275082493c06630eb5d3b29feea8
+>>>>>>> dcc8cb5496c9702a4ab0cd1ae4622512efb24a41
     };
     public static String [] fieldSuratKeteranganBedaTanggalLahir = new String[]{
             "Nomor Surat",
@@ -296,8 +306,10 @@ public class FieldSurat {
             "Nomor Mesin",
             "Warna",
             "Bahan Bakar",
+            "TNKB",
             "BPKB No:",
-            "Atas Nama"
+            "Atas Nama",
+            "status"
     };
     public static String [] fieldSuratKeteranganMelakukanPenelitian = new String[]{
             "Nomor Surat",

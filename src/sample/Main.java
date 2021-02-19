@@ -6,11 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("view/Main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("View/Main.fxml"));
         primaryStage.setTitle("Pelayanan");
         primaryStage.setScene(new Scene(root, 600, 500));
         primaryStage.setMaximized(true);

@@ -4,18 +4,32 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import sample.modal.FieldSurat;
 import sample.modal.Surat;
 import sample.utils.Helper;
+import com.spire.doc.*;
 
-import java.io.IOException;
+
+import java.awt.*;
+import java.io.*;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.List;
 
 public class FormController extends Helper{
 
@@ -25,7 +39,7 @@ public class FormController extends Helper{
     }
 
     @FXML
-    private void pagePrint() {
+    private void pagePrint() throws IOException {
         ObservableList<Node> childrens = formGrid.getChildren();
         String judul = "";
         String value;
@@ -44,7 +58,8 @@ public class FormController extends Helper{
                 }
             }
         }
-        fieldList.forEach((key, value1) -> System.out.println(key + " " + value1));
+        replace(fieldList);
+//        excel(fieldList);
     }
 
     @FXML
@@ -76,6 +91,348 @@ public class FormController extends Helper{
     private List<FieldSurat> fieldSurats = new ArrayList<>();
     private Map<String, String> fieldList = new LinkedHashMap<>();
     private String[] fieldKolomSurat;
+    private String txt;
+
+    public void open(String direktori){
+        Desktop desktop = Desktop.getDesktop();
+        try {
+            File f = new File(direktori);
+            desktop.open(f);  // opens application (MSWord) associated with .doc file
+        }
+        catch(Exception ex) {
+            // WordDocument.this is to refer to outer class's instance from inner class
+        }
+    }
+
+    public void excel(Map<String, String> peta) throws IOException {
+
+        FileInputStream file = new FileInputStream(new File("src/sample/template/"+txt+".xlsx"));
+
+        //Create Workbook instance holding reference to .xlsx file
+        XSSFWorkbook workbook = new XSSFWorkbook(file);
+
+        //Get first/desired sheet from the workbook
+        XSSFSheet sheet = workbook.getSheetAt(0);
+
+        //Iterate over data and write to sheet
+        int rowCount = sheet.getLastRowNum();
+        Row row = sheet.createRow(++rowCount);
+
+        Iterator iterator = peta.keySet().iterator();
+        int cellnum = 0;
+
+        while(iterator.hasNext()){
+            Object key   = iterator.next();
+//            System.out.println("ini dia judul "+ (String) key);
+            Object value = peta.get(key);
+            Cell cell = row.createCell(cellnum++);
+            cell.setCellValue((String) value);
+//            System.out.println("ini dia hasil "+ (String) value);
+        }
+
+        try
+        {
+            //Write the workbook in file system
+            FileOutputStream out = new FileOutputStream(new File("src/sample/template/"+txt+".xlsx"));
+            workbook.write(out);
+            out.close();
+//            System.out.println("howtodoinjava_demo.xlsx written successfully on disk.");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void replace(Map<String, String> peta){
+        String input = "src\\sample\\template\\"+txt+".docx";
+        String output = "src\\sample\\template\\keluaran "+txt+".docx";
+        //load Word document
+        Document document = new Document();
+        document.loadFromFile(input, FileFormat.Docx);
+
+        Iterator iterator = peta.keySet().iterator();
+
+        while(iterator.hasNext()){
+            Object key   = iterator.next();
+            Object value = peta.get(key);
+            switch((String) key) {
+                case "Nama":
+                    document.replace("namx", (String) value, false, true);
+                    break;
+                case "Jenis Kelamin":
+                    document.replace("jkx", (String) value, false, true);
+                    break;
+                case "Tempat / Tgl Lahir":
+                    document.replace("ttlx", (String) value, false, true);
+                    break;
+                case "Agama / Kebangsaan":
+                    document.replace("agx", (String) value, false, true);
+                    break;
+                case "Pekerjaan":
+                    document.replace("pjx", (String) value, false, true);
+                    break;
+                case "NIK":
+                    document.replace("nikx", (String) value, false, true);
+                    break;
+                case "Alamat":
+                    document.replace("alx", (String) value, false, true);
+                    break;
+                case "Nomer Lingkungan":
+                    document.replace("nlx", (String) value, false, true);
+                    break;
+                case "Nomor Surat":
+                    document.replace("nsx", (String) value, false, true);
+                    break;
+                case "Tgl Meninggal":
+                    document.replace("tgmx", (String) value, false, true);
+                    break;
+                case "Bukti":
+                    document.replace("bux", (String) value, false, true);
+                    break;
+                case "Nama 2":
+                    document.replace("namx2", (String) value, false, true);
+                    break;
+                case "Bukti 2":
+                    document.replace("bux2", (String) value, false, true);
+                    break;
+                case "Tempat / Tgl Lahir 2":
+                    document.replace("ttlx2", (String) value, false, true);
+                    break;
+                case "Nama Perusahaan/Usaha":
+                    document.replace("npux", (String) value, false, true);
+                    break;
+                case "Jenis Usaha":
+                    document.replace("juxx", (String) value, false, true);
+                    break;
+                case "Alamat Usaha":
+                    document.replace("aluxx", (String) value, false, true);
+                    break;
+                case "Status Bangunan":
+                    document.replace("sbx", (String) value, false, true);
+                    break;
+                case "No. Akte Pendirian":
+                    document.replace("napx", (String) value, false, true);
+                    break;
+                case "Tanggal /Tahun Berdiri":
+                    document.replace("ttbx", (String) value, false, true);
+                    break;
+                case "Penanggung Jawab":
+                    document.replace("penjx", (String) value, false, true);
+                    break;
+                case "Status dari":
+                    document.replace("sdx", (String) value, false, true);
+                    break;
+                case "Jenis Kelamin 2":
+                    document.replace("jkx2", (String) value, false, true);
+                    break;
+                case "Agama / Kebangsaan 2":
+                    document.replace("agax2", (String) value, false, true);
+                    break;
+                case "Pekerjaan 2":
+                    document.replace("pjx2", (String) value, false, true);
+                    break;
+                case "NIK 2":
+                    document.replace("nikx2", (String) value, false, true);
+                    break;
+                case "Alamat 2":
+                    document.replace("alx2", (String) value, false, true);
+                    break;
+                case "Nama Istri":
+                    document.replace("nmxi", (String) value, false, true);
+                    break;
+                case "Status":
+                    document.replace("staxxx", (String) value, false, true);
+                    break;
+                case "Alamat Numpang":
+                    document.replace("alanumx", (String) value, false, true);
+                    break;
+                case "Jumlah Penghasilan":
+                    document.replace("penghaxxx", (String) value, false, true);
+                    break;
+                case "Luas Tanah":
+                    document.replace("luasxx", (String) value, false, true);
+                    break;
+                case "SHM":
+                    document.replace("shmxx", (String) value, false, true);
+                    break;
+                case "Alamat Tanah":
+                    document.replace("alatanx", (String) value, false, true);
+                    break;
+                case "Keperluan":
+                    document.replace("keperxxx", (String) value, false, true);
+                    break;
+                case "Nama Istri/Suami":
+                    document.replace("issumx", (String) value, false, true);
+                    break;
+                case "Terdakwa":
+                    document.replace("terdakx", (String) value, false, true);
+                    break;
+                case "Hubungan dengan Terdakwa":
+                    document.replace("hubterdakx", (String) value, false, true);
+                    break;
+                case "Nomor Perkara":
+                    document.replace("noperx", (String) value, false, true);
+                    break;
+                case "Barang yang Hilang":
+                    document.replace("barhilx", (String) value, false, true);
+                    break;
+                case "Atas Nama":
+                    document.replace("atasxxx", (String) value, false, true);
+                    break;
+                case "Terakhir Barang Ditemukan":
+                    document.replace("terbarx", (String) value, false, true);
+                    break;
+                case "Tanggal Bepergian":
+                    document.replace("tglxxx", (String) value, false, true);
+                    break;
+                case "TNKB":
+                    document.replace("tnkbx", (String) value, false, true);
+                    break;
+                case "Bepergian ke":
+                    document.replace("pergixx", (String) value, false, true);
+                    break;
+                case "Kecamatan":
+                    document.replace("matanx", (String) value, false, true);
+                    break;
+                case "Kabupaten/Kota":
+                    document.replace("kotaxxx", (String) value, false, true);
+                    break;
+                case "Provinsi":
+                    document.replace("provinx", (String) value, false, true);
+                    break;
+                case "Pengikut":
+                    document.replace("pengekxx", (String) value, false, true);
+                    break;
+                case "Merk":
+                    document.replace("merkxx", (String) value, false, true);
+                    break;
+                case "Jenis/Model":
+                    document.replace("jenmodlx", (String) value, false, true);
+                    break;
+                case "Tahun Pembuatan":
+                    document.replace("thnpemx", (String) value, false, true);
+                    break;
+                case "Isi Silinder":
+                    document.replace("silinx", (String) value, false, true);
+                    break;
+                case "nomor rangka":
+                    document.replace("rangx", (String) value, false, true);
+                    break;
+                case "Nomor Mesin":
+                    document.replace("mesxxx", (String) value, false, true);
+                    break;
+                case "Warna":
+                    document.replace("warnx", (String) value, false, true);
+                    break;
+                case "Bahan Bakar":
+                    document.replace("bakarx", (String) value, false, true);
+                    break;
+                case "BPKB No":
+                    document.replace("bpkxx", (String) value, false, true);
+                    break;
+                case "Nomer HP":
+                    document.replace("hpxx", (String) value, false, true);
+                    break;
+                case "Jurusan":
+                    document.replace("jursxx", (String) value, false, true);
+                    break;
+                case "Nama Sekolah":
+                    document.replace("seklxx", (String) value, false, true);
+                    break;
+                case "Judul Penelitian":
+                    document.replace("penelxx", (String) value, false, true);
+                    break;
+                case "Mulai":
+                    document.replace("mulxx", (String) value, false, true);
+                    break;
+                case "Selesai":
+                    document.replace("selexx", (String) value, false, true);
+                    break;
+                case "Hubungan":
+                    document.replace("hubxx", (String) value, false, true);
+                    break;
+                case "Nama Kelompok/Lembaga":
+                    document.replace("klpxx", (String) value, false, true);
+                    break;
+                case "Tahun Berdiri":
+                    document.replace("berdirixxx", (String) value, false, true);
+                    break;
+                case "Bidang Kegiatan":
+                    document.replace("bidangxxx", (String) value, false, true);
+                    break;
+                case "Tanggal Terakhir":
+                    document.replace("tglterxx", (String) value, false, true);
+                    break;
+                case "Anak yang Ke":
+                    document.replace("anakxx", (String) value, false, true);
+                    break;
+                case "Nama Ayah":
+                    document.replace("ayahxx", (String) value, false, true);
+                    break;
+                case "Nama Ibu":
+                    document.replace("ibuxx", (String) value, false, true);
+                    break;
+                case "Tgl Menikah":
+                    document.replace("menikahxxx", (String) value, false, true);
+                    break;
+                default:
+                    break;
+            }
+        }
+        LocalDate myDateObj = LocalDate.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String formattedDate = myDateObj.format(myFormatObj);
+        int tahun = myDateObj.getYear();
+        int bulan = myDateObj.getMonthValue();
+        document.replace("tanggaxx", formattedDate, false, true);
+        document.replace("TAHUNXX", String.valueOf(tahun), false, true);
+        switch (bulan){
+            case 1:
+                document.replace("BULANXX","I", false, true);
+                break;
+            case 2:
+                document.replace("BULANXX","II", false, true);
+                break;
+            case 3:
+                document.replace("BULANXX","III", false, true);
+                break;
+            case 4:
+                document.replace("BULANXX","IV", false, true);
+                break;
+            case 5:
+                document.replace("BULANXX","V", false, true);
+                break;
+            case 6:
+                document.replace("BULANXX","VI", false, true);
+                break;
+            case 7:
+                document.replace("BULANXX","VII", false, true);
+                break;
+            case 8:
+                document.replace("BULANXX","VIII", false, true);
+                break;
+            case 9:
+                document.replace("BULANXX","IX", false, true);
+                break;
+            case 10:
+                document.replace("BULANXX","X", false, true);
+                break;
+            case 11:
+                document.replace("BULANXX","XI", false, true);
+                break;
+            case 12:
+                document.replace("BULANXX","XII", false, true);
+                break;
+            default:
+                break;
+        }
+
+
+        //save the document
+        document.saveToFile(output,FileFormat.Docx);
+        open(output);
+    }
 
     public void setColumnName(String testText) {
         System.out.println(testText);
@@ -150,7 +507,7 @@ public class FormController extends Helper{
 
     public void init(String text){
         setColumnName(text);
-
+        txt=text;
         fieldSurats.addAll(getFieldSurats());
 
 
