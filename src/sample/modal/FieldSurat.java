@@ -22,8 +22,8 @@ public class FieldSurat {
             "Alamat",
             "Lingkungan",
             "Nomer Lingkungan",
-            "Jenis Usaha",
-            "Keperluan"
+            "Jenis Usaha"
+//            "Keperluan"
 
     };
 

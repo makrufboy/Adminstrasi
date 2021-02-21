@@ -386,6 +386,9 @@ public class FormController extends Helper{
                 case "Tgl Menikah":
                     document.replace("menikahxxx", (String) value, false, true);
                     break;
+                case "Lingkungan":
+                    document.replace("lingxxx", (String) value, false, true);
+                    break;
                 default:
                     break;
             }
