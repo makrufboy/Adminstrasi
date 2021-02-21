@@ -21,7 +21,7 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
-            "Nomer Lingkungan",
+            "No Lingkungan",
             "Jenis Usaha",
             "Keperluan"
 
@@ -39,7 +39,9 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
-            "Tgl Meninggal"
+            "No Lingkungan",
+            "Tgl Meninggal",
+            "Keperluan"
     };
 
     public static String [] fieldSuratKeteranganBedaNama = new String[]{
@@ -54,7 +56,9 @@ public class FieldSurat {
             "Pekerjaan",
             "NIK",
             "Alamat",
-            "Lingkungan"
+            "Lingkungan",
+            "No Lingkungan",
+            "Keperluan"
     };
     public static String [] fieldSuratKeteranganBedaTanggalLahir = new String[]{
             "Nomor Surat",
@@ -68,7 +72,9 @@ public class FieldSurat {
             "Pekerjaan",
             "NIK",
             "Alamat",
-            "Lingkungan"
+            "Lingkungan",
+            "No Lingkungan",
+            "Keperluan"
     };
 
     public static String [] fieldSuratKeteranganBelumMemilikiRumah = new String[]{
@@ -81,6 +87,7 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
             "Keperluan"
     };
     public static String [] fieldSuratKeteranganDomisiliUsaha = new String[]{
@@ -93,13 +100,15 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
             "Nama Perusahaan/Usaha",
             "Jenis Usaha",
             "Alamat Usaha",
             "Status Bangunan",
             "No. Akte Pendirian",
             "Tanggal /Tahun Berdiri",
-            "Penanggung Jawab"
+            "Penanggung Jawab",
+            "Keperluan"
 
 };
     public static String [] fieldSuratKeteranganIdentitasOrangTua = new String[]{
@@ -112,6 +121,7 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
             "Status dari",
             "Nama Orang Tua",
             "Jenis Kelamin Orang Tua",
@@ -132,8 +142,10 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
             "Nama Istri",
-            "Status"
+            "Status",
+            "Keperluan"
     };
     public static String [] fieldSuratKeteranganJanda = new String[]{
             "Nomor Surat",
@@ -145,8 +157,10 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
             "Nama Suami",
-            "Status"
+            "Status",
+            "Keperluan"
     };
     public static String [] fieldSuratKeteranganNumpangNikah = new String[]{
             "Nomor Surat",
@@ -165,7 +179,9 @@ public class FieldSurat {
             "NIK 2",
             "Alamat 2",
             "Alamat Numpang",
-            "Lingkungan"
+            "Lingkungan",
+            "No Lingkungan",
+            "Keperluan"
     };
     public static String [] fieldSuratKeteranganPenghasilan = new String[]{
             "Nomor Surat",
@@ -176,6 +192,7 @@ public class FieldSurat {
             "Pekerjaan",
             "NIK",
             "Alamat",
+            "No Lingkungan",
             "Lingkungan",
             "Universitas",
             "Nama Orang Tua",
@@ -193,9 +210,11 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
             "Luas Tanah",
             "SHM",
-            "Alamat Tanah"
+            "Alamat Tanah",
+            "Keperluan"
     };
 
     public static String [] fieldSuratKeteranganTidakMampu = new String[]{
@@ -208,6 +227,7 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
             "Keperluan"
     };
     public static String [] fieldSuratKeteranganCeraiLingkungan = new String[]{
@@ -220,8 +240,10 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
             "Nama Istri/Suami",
-            "Status"
+            "Status",
+            "Keperluan"
     };
     public static String [] fieldSuratKeteranganCatatanKepolisian = new String[]{
             "Nomor Surat",
@@ -233,6 +255,7 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
             "Keperluan"
     };
     public static String [] fieldSuratKeteranganIzinBerkunjung = new String[]{
@@ -241,9 +264,11 @@ public class FieldSurat {
             "Jenis Kelamin",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
             "Terdakwa",
             "Hubungan dengan Terdakwa",
-            "Nomor Perkara"
+            "Nomor Perkara",
+            "Keperluan"
     };
     public static String [] fieldSuratKeteranganKehilangan = new String[]{
             "Nomor Surat",
@@ -254,6 +279,7 @@ public class FieldSurat {
             "Pekerjaan",
             "NIK",
             "Alamat",
+            "No Lingkungan",
             "Lingkungan",
             "Barang yang Hilang",
             "Atas Nama",
@@ -270,7 +296,7 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
-            "Nomer Lingkungan",
+            "No Lingkungan",
             "Tanggal Bepergian",
             "Bepergian ke",
             "Kecamatan",
@@ -288,6 +314,7 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
             "Merk",
             "Jenis/Model",
             "Tahun Pembuatan",
@@ -297,7 +324,8 @@ public class FieldSurat {
             "Warna",
             "Bahan Bakar",
             "BPKB No:",
-            "Atas Nama"
+            "Atas Nama",
+            "Keperluan"
     };
     public static String [] fieldSuratKeteranganMelakukanPenelitian = new String[]{
             "Nomor Surat",
@@ -305,12 +333,14 @@ public class FieldSurat {
             "NIM",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
             "Nomer HP",
             "Jurusan",
             "Nama Sekolah",
             "Judul Penelitian",
             "Tanggal Mulai",
-            "Tanggal Selesai"
+            "Tanggal Selesai",
+            "Keperluan"
     };
     public static String [] fieldSuratKeteranganPerwalian = new String[]{
             "Nomor Surat",
@@ -322,6 +352,7 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
             "Hubungan",
             "Nama Wali",
             "Jenis Kelamin Wali",
@@ -329,7 +360,8 @@ public class FieldSurat {
             "Agama / Kebangsaan Wali",
             "Pekerjaan Wali",
             "NIK Wali",
-            "Alamat Wali"
+            "Alamat Wali",
+            "Keperluan"
     };
     public static String [] fieldSuratKeteranganTerdaftar = new String[]{
             "Nomor Surat",
@@ -338,6 +370,7 @@ public class FieldSurat {
             "Bidang Kegiatan",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
             "Tanggal Terakhir",
             "Keperluan"
     };
@@ -352,9 +385,11 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
             "Anak Ke",
             "Nama Ayah",
-            "Nama Ibu"
+            "Nama Ibu",
+            "Keperluan"
     };
     public static String [] fieldSuratKeteranganMenikah = new String[]{
             "Nomor Surat",
@@ -366,6 +401,7 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
             "Nama Pasangan" ,
             "Jenis Kelamin Pasangan",
             "Tempat / Tgl Lahir Pasangan",
@@ -373,7 +409,8 @@ public class FieldSurat {
             "Pekerjaan Pasangan",
             "NIK Pasangan",
             "Alamat Pasangan",
-            "Tgl Menikah"
+            "Tgl Menikah",
+            "Keperluan"
 
     };
     public static String [] fieldSuratKeteranganBelumMenikah = new String[]{
@@ -386,6 +423,8 @@ public class FieldSurat {
             "NIK",
             "Alamat",
             "Lingkungan",
+            "No Lingkungan",
+            "Keperluan"
 
     };
     public static String[] getFieldSuratKeteranganUsaha() {

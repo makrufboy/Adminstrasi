@@ -178,7 +178,7 @@ public class FormController extends Helper{
                 case "Alamat":
                     document.replace("alx", (String) value, false, true);
                     break;
-                case "Nomer Lingkungan":
+                case "No Lingkungan":
                     document.replace("nlx", (String) value, false, true);
                     break;
                 case "Nomor Surat":
