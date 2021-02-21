@@ -24,7 +24,6 @@ public class FieldSurat {
             "No Lingkungan",
             "Jenis Usaha",
             "Keperluan"
-
     };
 
 
