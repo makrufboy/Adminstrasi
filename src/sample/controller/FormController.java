@@ -24,6 +24,7 @@ import com.spire.doc.*;
 import java.awt.*;
 import java.io.*;
 
+import java.nio.file.Path;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -59,7 +60,7 @@ public class FormController extends Helper{
             }
         }
         replace(fieldList);
-//        excel(fieldList);
+        excel(fieldList);
     }
 
     @FXML
@@ -133,9 +134,18 @@ public class FormController extends Helper{
         try
         {
             //Write the workbook in file system
+            File theDir = new File("D:\\netbean\\tes\\coba");
+            String dir= "D:\\netbean\\tes\\coba\\Keluaran ";
+            if (!theDir.exists()){
+                theDir.mkdirs();
+            }
+
             FileOutputStream out = new FileOutputStream(new File("src/sample/template/"+txt+".xlsx"));
             workbook.write(out);
             out.close();
+            FileOutputStream out2 = new FileOutputStream(new File(dir+txt+".xlsx"));
+            workbook.write(out2);
+            out2.close();
 //            System.out.println("howtodoinjava_demo.xlsx written successfully on disk.");
         }
         catch (Exception e)
@@ -146,7 +156,7 @@ public class FormController extends Helper{
 
     public void replace(Map<String, String> peta){
         String input = "src\\sample\\template\\"+txt+".docx";
-        String output = "src\\sample\\template\\keluaran "+txt+".docx";
+
         //load Word document
         Document document = new Document();
         document.loadFromFile(input, FileFormat.Docx);
@@ -385,44 +395,57 @@ public class FormController extends Helper{
         String formattedDate = myDateObj.format(myFormatObj);
         int tahun = myDateObj.getYear();
         int bulan = myDateObj.getMonthValue();
-        document.replace("tanggaxx", formattedDate, false, true);
+        int hari = myDateObj.getDayOfMonth();
+//        document.replace("tanggaxx", formattedDate, false, true);
         document.replace("TAHUNXX", String.valueOf(tahun), false, true);
         switch (bulan){
             case 1:
                 document.replace("BULANXX","I", false, true);
+                document.replace("tanggaxx", hari+" "+"Januari "+tahun, false, true);
                 break;
             case 2:
                 document.replace("BULANXX","II", false, true);
+                document.replace("tanggaxx", hari+" "+"Februari "+tahun, false, true);
                 break;
             case 3:
                 document.replace("BULANXX","III", false, true);
+                document.replace("tanggaxx", hari+" "+"Maret "+tahun, false, true);
                 break;
             case 4:
                 document.replace("BULANXX","IV", false, true);
+                document.replace("tanggaxx", hari+" "+"April "+tahun, false, true);
                 break;
             case 5:
                 document.replace("BULANXX","V", false, true);
+                document.replace("tanggaxx", hari+" "+"Mei "+tahun, false, true);
                 break;
             case 6:
                 document.replace("BULANXX","VI", false, true);
+                document.replace("tanggaxx", hari+" "+"Juni "+tahun, false, true);
                 break;
             case 7:
                 document.replace("BULANXX","VII", false, true);
+                document.replace("tanggaxx", hari+" "+"Juli  "+tahun, false, true);
                 break;
             case 8:
                 document.replace("BULANXX","VIII", false, true);
+                document.replace("tanggaxx", hari+" "+"Agustus  "+tahun, false, true);
                 break;
             case 9:
                 document.replace("BULANXX","IX", false, true);
+                document.replace("tanggaxx", hari+" "+"September  "+tahun, false, true);
                 break;
             case 10:
                 document.replace("BULANXX","X", false, true);
+                document.replace("tanggaxx", hari+" "+"Oktober  "+tahun, false, true);
                 break;
             case 11:
                 document.replace("BULANXX","XI", false, true);
+                document.replace("tanggaxx", hari+" "+"November  "+tahun, false, true);
                 break;
             case 12:
                 document.replace("BULANXX","XII", false, true);
+                document.replace("tanggaxx", hari+" "+"Desember  "+tahun, false, true);
                 break;
             default:
                 break;
@@ -430,6 +453,12 @@ public class FormController extends Helper{
 
 
         //save the document
+        File theDir = new File("D:\\netbean\\tes\\coba");
+        String dir= "D:\\netbean\\tes\\coba\\Keluaran ";
+        if (!theDir.exists()){
+            theDir.mkdirs();
+        }
+        String output = dir+txt+".docx";
         document.saveToFile(output,FileFormat.Docx);
         open(output);
     }
