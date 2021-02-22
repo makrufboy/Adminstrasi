@@ -57,13 +57,6 @@ public class Controller implements Initializable {
         isSurat = false;
         grid.getChildren().clear();
 
-        newMyListener = new NewMyListener() {
-            @Override
-            public void onClickListener(MouseEvent mouseEvent) {
-                System.out.println("Clicked");
-            }
-        };
-
         int col = 0;
         int row = 1;
 
@@ -282,6 +275,12 @@ public class Controller implements Initializable {
         surats.addAll(getData());
         excelDatas.addAll(getDataExcel());
 
+        newMyListener = new NewMyListener() {
+            @Override
+            public void onClickListener(MouseEvent mouseEvent) {
+                System.out.println("Clicked");
+            }
+        };
         myListener = new MyListener() {
             @Override
             public void onClickListener(Surat surat, MouseEvent mouseEvent) {
@@ -356,30 +355,6 @@ public class Controller implements Initializable {
 
                         surats.addAll(getSpecificData(search.getText()));
 
-                        myListener = new MyListener() {
-                            @Override
-                            public void onClickListener(Surat surat, MouseEvent mouseEvent) {
-                                try {
-                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Form.fxml"));
-                                    Parent root = loader.load();
-
-                                    Node node = (Node) mouseEvent.getSource();
-                                    Stage stage = (Stage) node.getScene().getWindow();
-
-                                    FormController formController = loader.getController();
-                                    formController.setLabelSurat(surat);
-                                    formController.init(surat.getNamaSurat());
-
-
-                                    stage.getScene().setRoot(root);
-                                    stage.setMaximized(true);
-                                    stage.show();
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        };
-
                         int col = 0;
                         int row = 1;
 
@@ -419,13 +394,6 @@ public class Controller implements Initializable {
                         excelDatas.clear();
 
                         excelDatas.addAll(getSpecificDataExcel(search.getText()));
-
-                        newMyListener = new NewMyListener() {
-                            @Override
-                            public void onClickListener(MouseEvent mouseEvent) {
-                                System.out.println("Clicked");
-                            }
-                        };
 
                         int col = 0;
                         int row = 1;
