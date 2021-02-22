@@ -134,16 +134,20 @@ public class FormController extends Helper{
         try
         {
             //Write the workbook in file system
-            File theDir = new File("D:\\netbean\\tes\\coba");
-            String dir= "D:\\netbean\\tes\\coba\\Keluaran ";
-            if (!theDir.exists()){
-                theDir.mkdirs();
-            }
+//            File theDir = new File("D:\\netbean\\tes\\coba");
+//            String dir= "D:\\netbean\\tes\\coba\\Keluaran ";
+//            if (!theDir.exists()){
+//                theDir.mkdirs();
+//            }
+            FileInputStream fis=new FileInputStream("excel.txt");
+            Scanner sc=new Scanner(fis);    //file to be scanned
+            String dir=sc.nextLine();
+            sc.close();
 
             FileOutputStream out = new FileOutputStream(new File("src/sample/template/"+txt+".xlsx"));
             workbook.write(out);
             out.close();
-            FileOutputStream out2 = new FileOutputStream(new File(dir+txt+".xlsx"));
+            FileOutputStream out2 = new FileOutputStream(new File(dir+"\\"+txt+".xlsx"));
             workbook.write(out2);
             out2.close();
 //            System.out.println("howtodoinjava_demo.xlsx written successfully on disk.");
@@ -154,7 +158,7 @@ public class FormController extends Helper{
         }
     }
 
-    public void replace(Map<String, String> peta){
+    public void replace(Map<String, String> peta) throws FileNotFoundException {
         String input = "src\\sample\\template\\"+txt+".docx";
 
         //load Word document
@@ -456,12 +460,16 @@ public class FormController extends Helper{
 
 
         //save the document
-        File theDir = new File("D:\\netbean\\tes\\coba");
-        String dir= "D:\\netbean\\tes\\coba\\Keluaran ";
-        if (!theDir.exists()){
-            theDir.mkdirs();
-        }
-        String output = dir+txt+".docx";
+//        File theDir = new File("D:\\netbean\\tes\\coba");
+//        String dir= "D:\\netbean\\tes\\coba\\Keluaran ";
+//        if (!theDir.exists()){
+//            theDir.mkdirs();
+//        }
+        FileInputStream fis=new FileInputStream("excel.txt");
+        Scanner sc=new Scanner(fis);    //file to be scanned
+        String dir=sc.nextLine();
+        sc.close();
+        String output = dir+"\\"+txt+".docx";
         document.saveToFile(output,FileFormat.Docx);
         open(output);
     }

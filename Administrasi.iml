@@ -11,7 +11,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jar/commons-codec-1.15.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../apache/poi-5.0.0/poi-5.0.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -20,7 +20,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jar/commons-collections4-4.4.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../apache/poi-5.0.0/poi-examples-5.0.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -29,7 +29,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jar/commons-compress-1.20.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../apache/poi-5.0.0/poi-excelant-5.0.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -38,7 +38,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jar/javax.activation-api-1.2.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../apache/poi-5.0.0/poi-integration-5.0.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -47,7 +47,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jar/jaxb-api-2.4.0-b180830.0359.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../apache/poi-5.0.0/poi-ooxml-5.0.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -56,7 +56,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jar/poi-5.0.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../apache/poi-5.0.0/poi-ooxml-full-5.0.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -65,7 +65,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jar/poi-examples-5.0.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../apache/poi-5.0.0/poi-ooxml-lite-5.0.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -74,7 +74,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jar/poi-excelant-5.0.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../apache/poi-5.0.0/poi-scratchpad-5.0.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -83,52 +83,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jar/poi-integration-5.0.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jar/poi-ooxml-5.0.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jar/poi-ooxml-full-5.0.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jar/poi-ooxml-lite-5.0.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jar/Spire.Doc.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jar/xmlbeans-4.0.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../Spire.Doc-FE_3.9.0/lib/Spire.Doc.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

@@ -19,7 +19,7 @@ public class ExcelController {
 
     @FXML
     private void clicked(MouseEvent mouseEvent){
-        newMyListener.onClickListener(mouseEvent);
+        newMyListener.onClickListener(excelData,mouseEvent);
     }
 
     private NewMyListener newMyListener;
