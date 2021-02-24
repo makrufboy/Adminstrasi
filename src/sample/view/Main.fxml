@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.controller.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../Style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
    <children>
       <VBox layoutY="125.0" prefHeight="677.0" prefWidth="200.0" style="-fx-background-color: #44DDFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="125.0">
          <children>
@@ -48,14 +48,14 @@
       </VBox>
       <Pane prefHeight="138.0" prefWidth="1200.0" style="-fx-background-color: #44DDFF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label alignment="CENTER" layoutX="455.0" layoutY="33.0" text="SISTEM INFORMASI PELAYANAN&#10;ADMINISTRASI KELURAHAN PAGUTAN" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="600.0" layoutY="33.0" text="SISTEM INFORMASI PELAYANAN&#10;ADMINISTRASI KELURAHAN PAGUTAN" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
             <ImageView fitHeight="125.0" fitWidth="115.0" layoutX="-1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@sample/images/Lambang.png" />
+                  <Image url="@../images/Lambang.png" />
                </image>
             </ImageView>
          </children>
@@ -100,7 +100,7 @@
                   </Label>
                   <ImageView fitHeight="36.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@sample/images/unram2.png" />
+                        <Image url="@../images/unram2.png" />
                      </image>
                   </ImageView>
                </children>

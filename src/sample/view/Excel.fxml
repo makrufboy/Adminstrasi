@@ -8,22 +8,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMousePressed="#clicked" prefHeight="257.0" prefWidth="305.0" styleClass="transparent"  xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.controller.ExcelController">
+<AnchorPane onMousePressed="#clicked" prefHeight="350.0" prefWidth="400.0" styleClass="transparent" stylesheets="@../Style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ExcelController">
    <children>
-      <VBox alignment="CENTER" layoutX="63.0" layoutY="8.0" prefHeight="250.0" prefWidth="300.0" styleClass="transparent"
-            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutX="63.0" layoutY="8.0" prefHeight="350.0" prefWidth="400.0" styleClass="transparent" stylesheets="@../Style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="imgExcel" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgExcel" fitHeight="180.0" fitWidth="225.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
                <image>
-                  <Image url="@sample/images/excel_logo.png" />
+                  <Image url="@../images/excel_logo.png" />
                </image>
             </ImageView>
             <Label fx:id="namaDataSurat" text="Data Surat Keterangan">
                <font>
-                  <Font name="Impact" size="20.0" />
+                  <Font name="Impact" size="22.0" />
                </font>
             </Label>
          </children>

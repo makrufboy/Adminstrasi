@@ -41,23 +41,10 @@ public class Controller implements Initializable {
 
     @FXML
     void chooser(ActionEvent event) throws IOException {
-//            Stage stage = new Stage();
-//            DirectoryChooser directoryChooser = new DirectoryChooser();
-//            File selectedDirectory = directoryChooser.showDialog(stage);
-//
-//            System.out.println(selectedDirectory.getAbsolutePath());
-//
-//            FileWriter myWriter = new FileWriter("excel.txt");
-//
-//            myWriter.write(selectedDirectory.getAbsolutePath());
-//            myWriter.close();
-//            System.out.println(selectedDirectory.getAbsolutePath());
         JFileChooser f = new JFileChooser();
         f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         f.showSaveDialog(null);
 
-//        System.out.println(f.getCurrentDirectory());
-//        System.out.println(f.getSelectedFile());
         FileWriter myWriter = new FileWriter("excel.txt");
 
         myWriter.write(String.valueOf(f.getSelectedFile()));
@@ -107,7 +94,6 @@ public class Controller implements Initializable {
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
-//                System.out.println("ini directori "+dir+nama);
                 Desktop desktop = Desktop.getDesktop();
                 try {
                     File f = new File(dir+nama+".xlsx");
@@ -148,7 +134,7 @@ public class Controller implements Initializable {
                 grid.setMaxHeight(Region.USE_PREF_SIZE);
 
 
-                GridPane.setMargin(anchorPane, new Insets(30));
+                GridPane.setMargin(anchorPane, new Insets(20));
 
             }
         }catch (IOException e){
@@ -199,16 +185,13 @@ public class Controller implements Initializable {
                 grid.setMaxHeight(Region.USE_PREF_SIZE);
 
 
-                GridPane.setMargin(anchorPane, new Insets(30));
+                GridPane.setMargin(anchorPane, new Insets(20));
 
             }
         }catch (IOException e){
             e.printStackTrace();
         }
     }
-
-
-
 
     private boolean isSurat = true;
     private MyListener myListener;
@@ -230,7 +213,6 @@ public class Controller implements Initializable {
             "Surat Keterangan Penghasilan",
             "Surat Keterangan Tanah Tidak Dalam Sengketa",
             "Surat Keterangan Tidak Mampu",
-//            "Surat Keterangan Cerai Lingkungan",
             "Surat Keterangan Catatan Kepolisian",
             "Surat Keterangan Izin Berkunjung",
             "Surat Keterangan Kehilangan",
@@ -258,7 +240,6 @@ public class Controller implements Initializable {
             "Surat Keterangan Penghasilan",
             "Surat Keterangan Tanah Tidak Dalam Sengketa",
             "Surat Keterangan Tidak Mampu",
-//            "Surat Keterangan Cerai Lingkungan",
             "Surat Keterangan Catatan Kepolisian",
             "Surat Keterangan Izin Berkunjung",
             "Surat Keterangan Kehilangan",
@@ -402,7 +383,7 @@ public class Controller implements Initializable {
                 grid.setMaxHeight(Region.USE_PREF_SIZE);
 
 
-                GridPane.setMargin(anchorPane, new Insets(30));
+                GridPane.setMargin(anchorPane, new Insets(20));
 
             }
         }catch (IOException e){
@@ -473,7 +454,7 @@ public class Controller implements Initializable {
                                 grid.setMaxHeight(Region.USE_PREF_SIZE);
 
 
-                                GridPane.setMargin(anchorPane, new Insets(30));
+                                GridPane.setMargin(anchorPane, new Insets(20));
 
                             }
                         } catch (IOException e) {
@@ -487,7 +468,21 @@ public class Controller implements Initializable {
                         newMyListener = new NewMyListener() {
                             @Override
                             public void onClickListener(ExcelData ED, MouseEvent mouseEvent) {
-                                System.out.println("ntah");
+                                String nama=ED.getDataSuratKeterangan();
+                                String dir="";
+                                try {
+                                    dir = direk()+"\\";
+                                } catch (FileNotFoundException e) {
+                                    e.printStackTrace();
+                                }
+                                Desktop desktop = Desktop.getDesktop();
+                                try {
+                                    File f = new File(dir+nama+".xlsx");
+                                    desktop.open(f);  // opens application (MSWord) associated with .doc file
+                                }
+                                catch(Exception ex) {
+                                    // WordDocument.this is to refer to outer class's instance from inner class
+                                }
                             }
                         };
 
@@ -520,7 +515,7 @@ public class Controller implements Initializable {
                                 grid.setMaxHeight(Region.USE_PREF_SIZE);
 
 
-                                GridPane.setMargin(anchorPane, new Insets(30));
+                                GridPane.setMargin(anchorPane, new Insets(20));
 
                             }
                         } catch (IOException e) {

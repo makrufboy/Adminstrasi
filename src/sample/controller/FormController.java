@@ -573,8 +573,6 @@ public class FormController extends Helper{
             this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganTanahTidakDalamSengketa();
         }else if(testText.equals("Surat Keterangan Tidak Mampu")){
             this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganTidakMampu();
-        }else if(testText.equals("Surat Keterangan Cerai Lingkungan")){
-            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganCeraiLingkungan();
         }else if(testText.equals("Surat Keterangan Catatan Kepolisian")){
             this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganCatatanKepolisian();
         }else if(testText.equals("Surat Keterangan Izin Berkunjung")){

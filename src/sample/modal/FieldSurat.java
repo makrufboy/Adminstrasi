@@ -227,21 +227,6 @@ public class FieldSurat {
             "Keperluan"
 
     };
-    public static String [] fieldSuratKeteranganCeraiLingkungan = new String[]{
-            "Nomor Surat",
-            "Nama",
-            "Jenis Kelamin",
-            "Tempat / Tgl Lahir",
-            "Agama / Kebangsaan",
-            "Pekerjaan",
-            "NIK",
-            "Alamat",
-            "Lingkungan",
-            "No Lingkungan",
-            "Nama Istri/Suami",
-            "Status",
-
-    };
     public static String [] fieldSuratKeteranganCatatanKepolisian = new String[]{
             "Nomor Surat",
             "Nama",
@@ -475,10 +460,6 @@ public class FieldSurat {
     public static String[] getFieldSuratKeteranganTanahTidakDalamSengketa() { return fieldSuratKeteranganTanahTidakDalamSengketa; }
 
     public static String[] getFieldSuratKeteranganTidakMampu() { return fieldSuratKeteranganTidakMampu; }
-
-    public static String[] getFieldSuratKeteranganCeraiLingkungan() {
-        return fieldSuratKeteranganCeraiLingkungan;
-    }
 
     public static String[] getFieldSuratKeteranganCatatanKepolisian() {
         return fieldSuratKeteranganCatatanKepolisian;
