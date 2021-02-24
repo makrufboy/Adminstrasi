@@ -4,7 +4,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -24,9 +23,6 @@ import com.spire.doc.*;
 import java.awt.*;
 import java.io.*;
 
-import java.nio.file.Path;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -134,16 +130,20 @@ public class FormController extends Helper{
         try
         {
             //Write the workbook in file system
-            File theDir = new File("D:\\netbean\\tes\\coba");
-            String dir= "D:\\netbean\\tes\\coba\\Keluaran ";
-            if (!theDir.exists()){
-                theDir.mkdirs();
-            }
+//            File theDir = new File("D:\\netbean\\tes\\coba");
+//            String dir= "D:\\netbean\\tes\\coba\\Keluaran ";
+//            if (!theDir.exists()){
+//                theDir.mkdirs();
+//            }
+            FileInputStream fis=new FileInputStream("excel.txt");
+            Scanner sc=new Scanner(fis);    //file to be scanned
+            String dir=sc.nextLine();
+            sc.close();
 
             FileOutputStream out = new FileOutputStream(new File("src/sample/template/"+txt+".xlsx"));
             workbook.write(out);
             out.close();
-            FileOutputStream out2 = new FileOutputStream(new File(dir+txt+".xlsx"));
+            FileOutputStream out2 = new FileOutputStream(new File(dir+"\\"+txt+".xlsx"));
             workbook.write(out2);
             out2.close();
 //            System.out.println("howtodoinjava_demo.xlsx written successfully on disk.");
@@ -154,7 +154,7 @@ public class FormController extends Helper{
         }
     }
 
-    public void replace(Map<String, String> peta){
+    public void replace(Map<String, String> peta) throws FileNotFoundException {
         String input = "src\\sample\\template\\"+txt+".docx";
 
         //load Word document
@@ -237,7 +237,7 @@ public class FormController extends Helper{
                     document.replace("jkx2", (String) value, false, true);
                     break;
                 case "Agama / Kebangsaan 2":
-                    document.replace("agax2", (String) value, false, true);
+                    document.replace("agx2", (String) value, false, true);
                     break;
                 case "Pekerjaan 2":
                     document.replace("pjx2", (String) value, false, true);
@@ -249,6 +249,9 @@ public class FormController extends Helper{
                     document.replace("alx2", (String) value, false, true);
                     break;
                 case "Nama Istri":
+                    document.replace("nmxi", (String) value, false, true);
+                    break;
+                case "Nama Suami":
                     document.replace("nmxi", (String) value, false, true);
                     break;
                 case "Status":
@@ -293,8 +296,14 @@ public class FormController extends Helper{
                 case "Terakhir Barang Ditemukan":
                     document.replace("terbarx", (String) value, false, true);
                     break;
+                case "lokasi Meninggal":
+                    document.replace("lomenxx", (String) value, false, true);
+                    break;
                 case "Tanggal Bepergian":
                     document.replace("tglxxx", (String) value, false, true);
+                    break;
+                case "Judul Penelitian":
+                    document.replace("judxx", (String) value, false, true);
                     break;
                 case "TNKB":
                     document.replace("tnkbx", (String) value, false, true);
@@ -338,7 +347,7 @@ public class FormController extends Helper{
                 case "Bahan Bakar":
                     document.replace("bakarx", (String) value, false, true);
                     break;
-                case "BPKB No":
+                case "BPKB No:":
                     document.replace("bpkxx", (String) value, false, true);
                     break;
                 case "Nomer HP":
@@ -350,13 +359,10 @@ public class FormController extends Helper{
                 case "Nama Sekolah":
                     document.replace("seklxx", (String) value, false, true);
                     break;
-                case "Judul Penelitian":
-                    document.replace("penelxx", (String) value, false, true);
-                    break;
-                case "Mulai":
+                case "Tanggal Mulai":
                     document.replace("mulxx", (String) value, false, true);
                     break;
-                case "Selesai":
+                case "Tanggal Selesai":
                     document.replace("selexx", (String) value, false, true);
                     break;
                 case "Hubungan":
@@ -389,7 +395,74 @@ public class FormController extends Helper{
                 case "Lingkungan":
                     document.replace("lingxxx", (String) value, false, true);
                     break;
+                case "Nama Orang Tua":
+                    document.replace("namx2", (String) value, false, true);
+                    break;
+                case "Jenis Kelamin Orang Tua":
+                    document.replace("jkx2", (String) value, false, true);
+                    break;
+                case "Tempat / Tgl Lahir Orang Tua":
+                    document.replace("ttlx2", (String) value, false, true);
+                    break;
+                case "Agama / Kebangsaan Orang Tua":
+                    document.replace("agx2", (String) value, false, true);
+                    break;
+                case "Pekerjaan Orang Tua":
+                    document.replace("pjx2", (String) value, false, true);
+                    break;
+                case "NIK Orang Tua":
+                    document.replace("nikx2", (String) value, false, true);
+                    break;
+                case "Alamat Orang Tua":
+                    document.replace("alx2", (String) value, false, true);
+                    break;
+                case "Nama Wali":
+                    document.replace("namx2", (String) value, false, true);
+                    break;
+                case "Jenis Kelamin Wali":
+                    document.replace("jkx2", (String) value, false, true);
+                    break;
+                case "Tempat / Tgl Lahir Wali":
+                    document.replace("ttlx2", (String) value, false, true);
+                    break;
+                case "Agama / Kebangsaan Wali":
+                    document.replace("agx2", (String) value, false, true);
+                    break;
+                case "Pekerjaan Wali":
+                    document.replace("pjx2", (String) value, false, true);
+                    break;
+                case "NIK Wali":
+                    document.replace("nikx2", (String) value, false, true);
+                    break;
+                case "Alamat Wali":
+                    document.replace("alx2", (String) value, false, true);
+                    break;
+                case "Universitas":
+                    document.replace("univx", (String) value, false, true);
+                    break;
+                case "Nama Pasangan":
+                    document.replace("namx2", (String) value, false, true);
+                    break;
+                case "Jenis Kelamin Pasangan":
+                    document.replace("jkx2", (String) value, false, true);
+                    break;
+                case "Tempat / Tgl Lahir Pasangan":
+                    document.replace("ttlx2", (String) value, false, true);
+                    break;
+                case "Agama / Kebangsaan Pasangan":
+                    document.replace("agx2", (String) value, false, true);
+                    break;
+                case "Pekerjaan Pasangan":
+                    document.replace("pjx2", (String) value, false, true);
+                    break;
+                case "NIK Pasangan":
+                    document.replace("nikx2", (String) value, false, true);
+                    break;
+                case "Alamat Pasangan":
+                    document.replace("alx2", (String) value, false, true);
+                    break;
                 default:
+
                     break;
             }
         }
@@ -456,18 +529,22 @@ public class FormController extends Helper{
 
 
         //save the document
-        File theDir = new File("D:\\netbean\\tes\\coba");
-        String dir= "D:\\netbean\\tes\\coba\\Keluaran ";
-        if (!theDir.exists()){
-            theDir.mkdirs();
-        }
-        String output = dir+txt+".docx";
+//        File theDir = new File("D:\\netbean\\tes\\coba");
+//        String dir= "D:\\netbean\\tes\\coba\\Keluaran ";
+//        if (!theDir.exists()){
+//            theDir.mkdirs();
+//        }
+        FileInputStream fis=new FileInputStream("excel.txt");
+        Scanner sc=new Scanner(fis);    //file to be scanned
+        String dir=sc.nextLine();
+        sc.close();
+        String output = dir+"\\"+txt+".docx";
         document.saveToFile(output,FileFormat.Docx);
         open(output);
     }
 
     public void setColumnName(String testText) {
-        System.out.println(testText);
+//        System.out.println(testText);
 
 //        check list data
         if (testText.equals("Surat Keterangan Usaha")){
@@ -510,7 +587,7 @@ public class FormController extends Helper{
             this.fieldKolomSurat = FieldSurat.getFieldSuratKepemilikanSepedaMotor();
         }else if(testText.equals("Surat Keterangan Telah Melakukan Penelitian")){
             this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganMelakukanPenelitian();
-        }else if(testText.equals("Surat Keterangan Perwalian/Pengampu")){
+        }else if(testText.equals("Surat Keterangan Perwalian")){
             this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganPerwalian();
         }else if(testText.equals("Surat Keterangan Terdaftar")){
             this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganTerdaftar();
@@ -518,6 +595,8 @@ public class FormController extends Helper{
             this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganDomisiliUsaha();
         }else if(testText.equals("Surat Keterangan Kelahiran")){
             this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganKelahiran();
+        }else if(testText.equals("Surat Keterangan Janda")){
+            this.fieldKolomSurat = FieldSurat.getFieldSuratKeteranganJanda();
         }
     }
 
@@ -549,7 +628,7 @@ public class FormController extends Helper{
         try {
             for (int i=0; i<fieldSurats.size(); i++){
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("../view/Field_item.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/sample/view/Field_item.fxml"));
 
                 AnchorPane anchorPane = fxmlLoader.load();
 

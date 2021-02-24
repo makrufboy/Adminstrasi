@@ -15,20 +15,22 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import sample.modal.ExcelData;
 import sample.modal.Surat;
 import sample.utils.MyListener;
 import sample.utils.NewMyListener;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class Controller implements Initializable {
     @FXML
@@ -39,17 +41,54 @@ public class Controller implements Initializable {
 
     @FXML
     void chooser(ActionEvent event) throws IOException {
-            Stage stage = new Stage();
-            DirectoryChooser directoryChooser = new DirectoryChooser();
-            File selectedDirectory = directoryChooser.showDialog(stage);
+//            Stage stage = new Stage();
+//            DirectoryChooser directoryChooser = new DirectoryChooser();
+//            File selectedDirectory = directoryChooser.showDialog(stage);
+//
+//            System.out.println(selectedDirectory.getAbsolutePath());
+//
+//            FileWriter myWriter = new FileWriter("excel.txt");
+//
+//            myWriter.write(selectedDirectory.getAbsolutePath());
+//            myWriter.close();
+//            System.out.println(selectedDirectory.getAbsolutePath());
+        JFileChooser f = new JFileChooser();
+        f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        f.showSaveDialog(null);
 
-            System.out.println(selectedDirectory.getAbsolutePath());
+//        System.out.println(f.getCurrentDirectory());
+//        System.out.println(f.getSelectedFile());
+        FileWriter myWriter = new FileWriter("excel.txt");
 
-            FileWriter myWriter = new FileWriter("excel.txt");
+        myWriter.write(String.valueOf(f.getSelectedFile()));
+        myWriter.close();
 
-            myWriter.write(selectedDirectory.getAbsolutePath());
-            myWriter.close();
-            System.out.println(selectedDirectory.getAbsolutePath());
+        int banyak = nama_surat.length;
+        System.out.println("jumlah "+banyak);
+        System.out.println("isi "+nama_surat[0]);
+        for(int i =0;i<banyak;i++){
+            FileInputStream file = new FileInputStream(new File("src/sample/template/"+nama_surat[i]+".xlsx"));
+
+            //Create Workbook instance holding reference to .xlsx file
+            XSSFWorkbook workbook = new XSSFWorkbook(file);
+
+            try
+            {
+                FileInputStream fis=new FileInputStream("excel.txt");
+                Scanner sc=new Scanner(fis);    //file to be scanned
+                String dir=sc.nextLine();
+                sc.close();
+
+                FileOutputStream out2 = new FileOutputStream(new File(dir+"\\"+nama_surat[i]+".xlsx"));
+                workbook.write(out2);
+                out2.close();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     @FXML
@@ -59,8 +98,24 @@ public class Controller implements Initializable {
 
         newMyListener = new NewMyListener() {
             @Override
-            public void onClickListener(MouseEvent mouseEvent) {
-                System.out.println("Clicked");
+            public void onClickListener(ExcelData ED, MouseEvent mouseEvent) {
+                System.out.println("teken");
+                String nama=ED.getDataSuratKeterangan();
+                String dir="";
+                try {
+                    dir=direk()+"\\";
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+//                System.out.println("ini directori "+dir+nama);
+                Desktop desktop = Desktop.getDesktop();
+                try {
+                    File f = new File(dir+nama+".xlsx");
+                    desktop.open(f);  // opens application (MSWord) associated with .doc file
+                }
+                catch(Exception ex) {
+                    // WordDocument.this is to refer to outer class's instance from inner class
+                }
             }
         };
 
@@ -70,7 +125,7 @@ public class Controller implements Initializable {
         try {
             for (int i=0; i< excelDatas.size(); i++){
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("../view/Excel.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/sample/view/Excel.fxml"));
 
                 AnchorPane anchorPane = fxmlLoader.load();
 
@@ -101,6 +156,14 @@ public class Controller implements Initializable {
         }
     }
 
+    String direk() throws FileNotFoundException {
+        FileInputStream fis=new FileInputStream("excel.txt");
+        Scanner sc=new Scanner(fis);    //file to be scanned
+        String dir=sc.nextLine();
+        sc.close();
+        return dir;
+    }
+
     @FXML
     void pageSurat(ActionEvent event) {
         isSurat = true;
@@ -113,7 +176,7 @@ public class Controller implements Initializable {
         try {
             for (int i=0; i< surats.size(); i++){
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("../view/Data_item.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/sample/view/Data_item.fxml"));
 
                 AnchorPane anchorPane = fxmlLoader.load();
 
@@ -167,7 +230,35 @@ public class Controller implements Initializable {
             "Surat Keterangan Penghasilan",
             "Surat Keterangan Tanah Tidak Dalam Sengketa",
             "Surat Keterangan Tidak Mampu",
-            "Surat Keterangan Cerai Lingkungan",
+//            "Surat Keterangan Cerai Lingkungan",
+            "Surat Keterangan Catatan Kepolisian",
+            "Surat Keterangan Izin Berkunjung",
+            "Surat Keterangan Kehilangan",
+            "Surat Keterangan Bepergian",
+            "Surat Keterangan Kepemilikan Sepeda Motor",
+            "Surat Keterangan Telah Melakukan Penelitian",
+            "Surat Keterangan Perwalian",
+            "Surat Keterangan Terdaftar",
+            "Surat Keterangan Domisili Usaha",
+            "Surat Keterangan Kelahiran"
+    };
+
+    private String [] nama_data_surat = new String[]{
+            "Surat Keterangan Usaha",
+            "Surat Keterangan Kematian",
+            "Surat Keterangan Beda Nama",
+            "Surat Keterangan Beda Tanggal Lahir",
+            "Surat Keterangan Belum Memiliki Rumah",
+            "Surat Keterangan Identitas Orang Tua",
+            "Surat Keterangan Duda",
+            "Surat Keterangan Janda",
+            "Surat Keterangan Menikah",
+            "Surat Keterangan Numpang Nikah",
+            "Surat Keterangan Belum Menikah",
+            "Surat Keterangan Penghasilan",
+            "Surat Keterangan Tanah Tidak Dalam Sengketa",
+            "Surat Keterangan Tidak Mampu",
+//            "Surat Keterangan Cerai Lingkungan",
             "Surat Keterangan Catatan Kepolisian",
             "Surat Keterangan Izin Berkunjung",
             "Surat Keterangan Kehilangan",
@@ -180,34 +271,6 @@ public class Controller implements Initializable {
             "Surat Keterangan Kelahiran"
     };
 
-    private String [] nama_data_surat = new String[]{
-            "Data Surat Keterangan Usaha",
-            "Data Surat Keterangan Kematian",
-            "Data Surat Keterangan Beda Nama",
-            "Data Surat Keterangan Beda Tanggal Lahir",
-            "Data Surat Keterangan Belum Memiliki Rumah",
-            "Data Surat Keterangan Identitas Orang Tua",
-            "Data Surat Keterangan Duda",
-            "Data Surat Keterangan Janda",
-            "Data Surat Keterangan Menikah",
-            "Data Surat Keterangan Numpang Nikah",
-            "Data Surat Keterangan Belum Menikah",
-            "Data Surat Keterangan Penghasilan",
-            "Data Surat Keterangan Tanah Tidak Dalam Sengketa",
-            "Data Surat Keterangan Tidak Mampu",
-            "Data Surat Keterangan Cerai Lingkungan",
-            "Data Surat Keterangan Catatan Kepolisian",
-            "Data Surat Keterangan Izin Berkunjung",
-            "Data Surat Keterangan Kehilangan",
-            "Data Surat Keterangan Bepergian",
-            "Data Surat Keterangan Kepemilikan Sepeda Motor",
-            "Data Surat Keterangan Telah Melakukan Penelitian",
-            "Data Surat Keterangan Perwalian/Pengampu",
-            "Data Surat Keterangan Terdaftar",
-            "Data Surat Keterangan Domisili Usaha",
-            "Data Surat Keterangan Kelahiran"
-    };
-
 
     private  List<Surat> getData() {
         List<Surat> surats = new ArrayList<>();
@@ -216,7 +279,7 @@ public class Controller implements Initializable {
         for (int i=0; i<nama_surat.length; i++){
             surat = new Surat();
             surat.setNamaSurat(nama_surat[i]);
-            surat.setImgSrc("../images/img_form.png");
+            surat.setImgSrc("/sample/images/img_form.png");
             surats.add(surat);
         }
 
@@ -230,7 +293,7 @@ public class Controller implements Initializable {
         for (int i=0; i<nama_data_surat.length; i++){
             excelData = new ExcelData();
             excelData.setDataSuratKeterangan(nama_data_surat[i]);
-            excelData.setImgDataSuratKeterangan("../images/excel_logo.png");
+            excelData.setImgDataSuratKeterangan("/sample/images/excel_logo.png");
             excelDatas.add(excelData);
         }
 
@@ -246,7 +309,7 @@ public class Controller implements Initializable {
                 if (nama_surat[i].toLowerCase().contains(data)){
                     surat = new Surat();
                     surat.setNamaSurat(nama_surat[i]);
-                    surat.setImgSrc("../images/img_form.png");
+                    surat.setImgSrc("/sample/images/img_form.png");
                     surats.add(surat);
                 }
             }
@@ -266,7 +329,7 @@ public class Controller implements Initializable {
                 if (nama_surat[i].toLowerCase().contains(data)){
                     excelData = new ExcelData();
                     excelData.setDataSuratKeterangan(nama_data_surat[i]);
-                    excelData.setImgDataSuratKeterangan("../images/excel_logo.png");
+                    excelData.setImgDataSuratKeterangan("/sample/images/excel_logo.png");
                     excelDatas.add(excelData);
                 }
             }
@@ -286,7 +349,7 @@ public class Controller implements Initializable {
             @Override
             public void onClickListener(Surat surat, MouseEvent mouseEvent) {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Form.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/view/Form.fxml"));
                     Parent root = loader.load();
 
                     Node node = (Node) mouseEvent.getSource();
@@ -314,9 +377,10 @@ public class Controller implements Initializable {
 
         try {
             for (int i=0; i< surats.size(); i++){
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("../view/Data_item.fxml"));
 
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/sample/view/Data_item.fxml"));
+//                System.out.println(fxmlLoader.getLocation());
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 DataItemController dataItemController = fxmlLoader.getController();
@@ -360,7 +424,7 @@ public class Controller implements Initializable {
                             @Override
                             public void onClickListener(Surat surat, MouseEvent mouseEvent) {
                                 try {
-                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Form.fxml"));
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/view/Form.fxml"));
                                     Parent root = loader.load();
 
                                     Node node = (Node) mouseEvent.getSource();
@@ -386,7 +450,7 @@ public class Controller implements Initializable {
                         try {
                             for (int i = 0; i < surats.size(); i++) {
                                 FXMLLoader fxmlLoader = new FXMLLoader();
-                                fxmlLoader.setLocation(getClass().getResource("../view/Data_item.fxml"));
+                                fxmlLoader.setLocation(getClass().getResource("/sample/view/Data_item.fxml"));
 
                                 AnchorPane anchorPane = fxmlLoader.load();
 
@@ -422,8 +486,8 @@ public class Controller implements Initializable {
 
                         newMyListener = new NewMyListener() {
                             @Override
-                            public void onClickListener(MouseEvent mouseEvent) {
-                                System.out.println("Clicked");
+                            public void onClickListener(ExcelData ED, MouseEvent mouseEvent) {
+                                System.out.println("ntah");
                             }
                         };
 
@@ -433,7 +497,7 @@ public class Controller implements Initializable {
                         try {
                             for (int i = 0; i < excelDatas.size(); i++) {
                                 FXMLLoader fxmlLoader = new FXMLLoader();
-                                fxmlLoader.setLocation(getClass().getResource("../view/Excel.fxml"));
+                                fxmlLoader.setLocation(getClass().getResource("/sample/view/Excel.fxml"));
 
                                 AnchorPane anchorPane = fxmlLoader.load();
 

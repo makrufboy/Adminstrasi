@@ -4,10 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
-import sample.modal.Surat;
 
 import java.io.IOException;
 
@@ -18,7 +15,7 @@ public class Helper {
 
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("../view/"+ page + ".fxml"));
+            root = FXMLLoader.load(getClass().getResource("/sample/view/" + page + ".fxml"));
         }catch (IOException e){
             e.printStackTrace();
         }
