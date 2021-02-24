@@ -86,7 +86,6 @@ public class Controller implements Initializable {
         newMyListener = new NewMyListener() {
             @Override
             public void onClickListener(ExcelData ED, MouseEvent mouseEvent) {
-                System.out.println("teken");
                 String nama=ED.getDataSuratKeterangan();
                 String dir="";
                 try {
@@ -118,7 +117,7 @@ public class Controller implements Initializable {
                 ExcelController excelController = fxmlLoader.getController();
                 excelController.setExcel(excelDatas.get(i), newMyListener);
 
-                if(col == 3){
+                if(col == 4){
                     col = 0;
                     row++;
                 }
@@ -134,7 +133,7 @@ public class Controller implements Initializable {
                 grid.setMaxHeight(Region.USE_PREF_SIZE);
 
 
-                GridPane.setMargin(anchorPane, new Insets(20));
+                GridPane.setMargin(anchorPane, new Insets(15));
 
             }
         }catch (IOException e){
@@ -169,7 +168,7 @@ public class Controller implements Initializable {
                 DataItemController dataItemController = fxmlLoader.getController();
                 dataItemController.setData(surats.get(i), myListener);
 
-                if(col == 3){
+                if(col == 4){
                     col = 0;
                     row++;
                 }
@@ -185,7 +184,7 @@ public class Controller implements Initializable {
                 grid.setMaxHeight(Region.USE_PREF_SIZE);
 
 
-                GridPane.setMargin(anchorPane, new Insets(20));
+                GridPane.setMargin(anchorPane, new Insets(15));
 
             }
         }catch (IOException e){
@@ -367,7 +366,7 @@ public class Controller implements Initializable {
                 DataItemController dataItemController = fxmlLoader.getController();
                 dataItemController.setData(surats.get(i), myListener);
 
-                if(col == 3){
+                if(col == 4){
                     col = 0;
                     row++;
                 }
@@ -383,7 +382,7 @@ public class Controller implements Initializable {
                 grid.setMaxHeight(Region.USE_PREF_SIZE);
 
 
-                GridPane.setMargin(anchorPane, new Insets(20));
+                GridPane.setMargin(anchorPane, new Insets(15));
 
             }
         }catch (IOException e){
@@ -438,7 +437,7 @@ public class Controller implements Initializable {
                                 DataItemController dataItemController = fxmlLoader.getController();
                                 dataItemController.setData(surats.get(i), myListener);
 
-                                if (col == 3) {
+                                if (col == 4) {
                                     col = 0;
                                     row++;
                                 }
@@ -454,7 +453,7 @@ public class Controller implements Initializable {
                                 grid.setMaxHeight(Region.USE_PREF_SIZE);
 
 
-                                GridPane.setMargin(anchorPane, new Insets(20));
+                                GridPane.setMargin(anchorPane, new Insets(15));
 
                             }
                         } catch (IOException e) {
@@ -499,7 +498,7 @@ public class Controller implements Initializable {
                                 ExcelController excelController = fxmlLoader.getController();
                                 excelController.setExcel(excelDatas.get(i), newMyListener);
 
-                                if (col == 3) {
+                                if (col == 4) {
                                     col = 0;
                                     row++;
                                 }
@@ -515,7 +514,7 @@ public class Controller implements Initializable {
                                 grid.setMaxHeight(Region.USE_PREF_SIZE);
 
 
-                                GridPane.setMargin(anchorPane, new Insets(20));
+                                GridPane.setMargin(anchorPane, new Insets(15));
 
                             }
                         } catch (IOException e) {
